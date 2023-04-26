@@ -7,6 +7,4 @@ import { HomeTemplateComponent } from '../home-template/home-template.component'
   standalone: true,
   imports: [HomeTemplateComponent],
 })
-export class HomePageComponent {
-  constructor() {}
-}
+export class HomePageComponent {}
