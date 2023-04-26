@@ -1,0 +1,10 @@
+<ng-container *ngIf="authType$ | async as authType">
+  <app-auth-template
+    [title]="(title$ | async)!"
+    [authType]="authType"
+    [errors]="(errors$ | async)!"
+    [authForm]="authForm"
+    [isSubmitting]="(isLoading$ | async)!"
+    (handleSubmitForm)="submitForm(authType)"
+  ></app-auth-template>
+</ng-container>

@@ -1,0 +1,55 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "src",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "@environments/*": [ "environments/*" ],
+      "@styles/*": [ "styles/*" ],
+      "@constants": [ "app/core/constants/index.ts" ],
+      "@enums": [ "app/core/enums/index.ts" ],
+      "@guards": [ "app/core/guards/index.ts" ],
+      "@interceptors": [ "app/core/interceptors/index.ts" ],
+      "@models": [ "app/core/models/index.ts" ],
+      "@resolvers": [ "app/core/resolvers/index.ts" ],
+      "@services": [ "app/core/services/index.ts" ],
+      "@utils": [ "app/core/utils/index.ts" ],
+      "@atoms": [ "app/shared/components/atoms/index.ts" ],
+      "@molecules": [ "app/shared/components/molecules/index.ts" ],
+      "@organisms": [ "app/shared/components/organisms/index.ts" ],
+      "@pipes": [ "app/shared/pipes/index.ts" ],
+      "@directives": [ "app/shared/directives/index.ts" ],
+      "@core/*": [ "app/core/*" ],
+      "@features/*": [ "app/features/*" ],
+      "@shared/*": [ "app/shared/*" ],
+      "@app/store": [ "app/store/root-store/index.ts" ],
+      "@app/store/auth": [ "app/store/root-store/features/auth/index.ts" ],
+      "@app/store/local": ["app/store/component-store/index.ts"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

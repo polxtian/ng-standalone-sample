@@ -1,0 +1,79 @@
+<!-- 
+      NOTE: this template is just an example on how to use local store implementation,
+      typically these elements below should be wrapped inside atomic components.
+  -->
+<div class="container">
+  <div class="top-ctrls-container">
+    <div class="add-record">
+      <img *ngIf="isLoading" src="assets/spinner.svg" alt="" />
+      <button [disabled]="isLoading" type="button" class="btn btn-outline-primary" (click)="onAddConsultant()">
+        Add Random Record
+      </button>
+    </div>
+    <div class="input-group">
+      <input
+        #searchInput
+        [value]="pageOptions.searchKey"
+        type="text"
+        (keypress)="onSearchKeyPress($event)"
+        class="form-control"
+        placeholder="Search Email, Firstname or Lastname"
+      />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="onSearchClick(searchInput.value)">
+          <img src="assets/search-icon.svg" alt="" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Lastname</th>
+        <th scope="col" class="table-action"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [@itemIn] *ngFor="let consultant of consultants" [ngClass]="{ 'table-active': consultant.isDeleting }">
+        <td contenteditable (blur)="onCellChange(consultant.id, 'consultantEmail', $event)">
+          {{ consultant.consultantEmail }}
+        </td>
+        <td contenteditable (blur)="onCellChange(consultant.id, 'firstName', $event)">{{ consultant.firstName }}</td>
+        <td contenteditable (blur)="onCellChange(consultant.id, 'lastName', $event)">{{ consultant.lastName }}</td>
+        <td class="table-action">
+          <button
+            [disabled]="consultant.isDeleting"
+            type="button"
+            (click)="onDeleteItem(consultant.id)"
+            class="btn btn-outline-danger btn-sm"
+          >
+            <i class="ion-android-delete"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="navigation-container">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" [ngClass]="{ disabled: pageOptions.isPreviousDisabled }">
+          <a class="page-link" (click)="onNavigate('previous')">Previous</a>
+        </li>
+        <li
+          *ngFor="let metadata of pageOptions.paginationMetadata"
+          class="page-item"
+          [ngClass]="{ active: metadata.isActive }"
+        >
+          <a class="page-link" (click)="onPageClick(metadata.pageNumber)">{{ metadata.pageNumber }}</a>
+        </li>
+
+        <li class="page-item" [ngClass]="{ disabled: pageOptions.isNextDisabled }">
+          <a class="page-link" (click)="onNavigate('next')">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
